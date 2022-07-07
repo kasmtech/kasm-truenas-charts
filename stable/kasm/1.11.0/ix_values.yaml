@@ -1,0 +1,18 @@
+image:
+  repository: kasmweb/workspaces
+  pullPolicy: Always
+  tag: 1.11.0
+
+securityContext:
+  privileged: true
+  allowPrivilegeEscalation: true
+  readOnlyRootFilesystem: false
+  runAsNonRoot: false
+
+podSecurityContext:
+  runAsUser: 0
+  runAsGroup: 0
+
+persistence:
+  varrun:
+    enabled: true
