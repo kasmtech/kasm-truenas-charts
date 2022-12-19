@@ -7,7 +7,7 @@ TrueCharts are designed to be installed as TrueNAS SCALE app only. We can not gu
 
 ## Source Code
 
-* <https://github.com/thelamer/charts-test/tree/main>
+* <https://github.com/kasmtech/kasm-truenas-charts>
 
 ## Requirements
 
