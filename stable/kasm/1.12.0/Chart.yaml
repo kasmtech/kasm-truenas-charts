@@ -1,0 +1,17 @@
+apiVersion: v2
+appVersion: 1.0.0
+dependencies:
+- name: common
+  repository: file://../../../library/common/2112.0.0
+  version: 2112.0.0
+description: Kasm Workspaces for TrueNAS SCALE
+home: https://www.kasmweb.com/
+icon: https://kasm-ci.s3.amazonaws.com/kasm_logo.png
+keywords:
+- desktop
+- browser
+- app-streaming
+name: kasm
+sources:
+- https://github.com/kasmtech
+version: 1.12.0

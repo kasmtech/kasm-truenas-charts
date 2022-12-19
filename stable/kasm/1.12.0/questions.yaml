@@ -1,0 +1,75 @@
+groups:
+  - name: Storage
+    description: Configure storage for Kasm Workspaces
+  - name: Networking
+    description: Networking Configuration for Kasm Workspaces
+portals:
+  admin:
+    protocols:
+      - "https"
+    host:
+      - "$node_ip"
+    ports:
+      - "$variable-admin_port"
+    path: "/"
+  web:
+    protocols:
+      - "https"
+    host:
+      - "$node_ip"
+    ports:
+      - "$variable-web_port"
+    path: "/"
+questions:
+  - variable: admin_port
+    label: "Install Wizard Port for Kasm Workspaces"
+    group: Networking
+    schema:
+      type: int
+      min: 8000
+      max: 65535
+      default: 20610
+      required: true
+  - variable: web_port
+    label: "Port for Kasm Workspaces"
+    group: Networking
+    schema:
+      type: int
+      min: 8000
+      max: 65535
+      default: 20611
+      required: true
+  - variable: appVolumeMounts
+    label: "Kasm Workspaces Storage"
+    group: "Storage"
+    schema:
+      type: dict
+      attrs:
+        - variable: data
+          label: "Storage Volume for Kasm Workspaces"
+          schema:
+            type: dict
+            attrs:
+              - variable: datasetName
+                label: "Storage Volume Dataset Name"
+                schema:
+                  type: string
+                  hidden: true
+                  $ref:
+                    - "normalize/ixVolume"
+                  show_if: [["hostPathEnabled", "=", false]]
+                  default: "ix-data"
+                  editable: false
+              - variable: mountPath
+                label: "Configuration Storage Mount Path"
+                description: "Path where the volume will be mounted inside the pod"
+                schema:
+                  type: path
+                  hidden: true
+                  editable: true
+                  default: "/opt"
+              - variable: hostPath
+                label: "Host Path for Kasm Workspaces Storage Volume"
+                schema:
+                  type: hostpath
+                  required: true
